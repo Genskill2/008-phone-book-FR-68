@@ -68,12 +68,10 @@ int main(int argc, char *argv[]) {
     }
     FILE *fp = open_db_file();
     char *name = argv[2];
-    int tp;
-    tp= search(fp, name);
-    if (tp==0)
-    printf("\no match\n");
+    if (search(fp, name)==0)
+    printf("\nno match\n");
     fclose(fp);
-    exit(1);
+    exit(0);
   } else if (strcmp(argv[1], "delete") == 0) {  /* Handle delete */
     if (argc != 3) {
       print_usage("Improper arguments for delete", argv[0]);
@@ -239,7 +237,7 @@ int search(FILE *db_file, char *name){
   int tmp=0;
   while (p!=NULL){
   if (strcmp(p->name, name)==0){
-  printf("%-20s : %10s\n", p->name, p->phone);
+  printf("%10s\n",p->phone);
   tmp=1;
   }p=p->next;
      } free_entries(base);
