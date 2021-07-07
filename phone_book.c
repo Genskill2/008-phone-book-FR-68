@@ -71,8 +71,9 @@ int main(int argc, char *argv[]) {
     int tp;
     tp= search(fp, name);
     if (tp==0)
-    printf("\nMatch not found\n");
+    printf("\no match\n");
     fclose(fp);
+    exit(1);
   } else if (strcmp(argv[1], "delete") == 0) {  /* Handle delete */
     if (argc != 3) {
       print_usage("Improper arguments for delete", argv[0]);
@@ -198,7 +199,7 @@ void list(FILE *db_file) {
     p=p->next;
     count++;
   }
-  printf("\nTotal entries : %d\n",count);
+  printf("\nTotal entries :  %d\n",count);
   free_entries(base);
 }
 
@@ -220,10 +221,10 @@ int delete(FILE *db_file, char *name) {
     prev->next=p->next;
     }
     free(del);
+    deleted=1;
     }
     prev=p;
     p=p->next;
-    deleted=1;
     }
   
   write_all_entries(base);
