@@ -216,6 +216,7 @@ int delete(FILE *db_file, char *name) {
       if(base==p){
     del=p;
     p=p->next;
+    base=p;
     }
     else{
     del=p;
