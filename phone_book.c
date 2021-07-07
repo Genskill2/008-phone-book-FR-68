@@ -225,7 +225,7 @@ int delete(FILE *db_file, char *name) {
     p=p->next;
     deleted=1;
     }
-  }
+  
   write_all_entries(base);
   free_entries(base);
   return deleted;
